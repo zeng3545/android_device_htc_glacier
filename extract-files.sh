@@ -30,7 +30,7 @@ adb pull /system/etc/AdieHWCodec.csv ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/etc/AdieHWCodec_WA.csv ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/etc/agps_rm ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/etc/AudioBTID.csv ../../../vendor/htc/$DEVICE/proprietary
-adb pull /system/etc/firmware/bcm4329.hcd ../../../vendor/htc/$DEVICE/proprietary
+adb pull /system/etc/firmware/BCM4329B1_002.002.023.0511.0538.hcd ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/etc/firmware/default.acdb ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/etc/firmware/default_org.acdb ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/etc/firmware/default_org_WA.acdb ../../../vendor/htc/$DEVICE/proprietary
@@ -43,11 +43,10 @@ adb pull /system/etc/firmware/vidc_720p_mp2_dec_mc.fw ../../../vendor/htc/$DEVIC
 adb pull /system/etc/firmware/vidc_720p_mp4_dec_mc.fw ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/etc/firmware/vidc_720p_mp4_enc_mc.fw ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/etc/firmware/vidc_720p_vc1_dec_mc.fw ../../../vendor/htc/$DEVICE/proprietary
-adb pull /system/etc/firmware/Vision_SPK.acdb ../../../vendor/htc/$DEVICE/proprietary
+adb pull /system/etc/firmware/Glacier_SPK.acdb ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/etc/firmware/yamato_pfp.fw ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/etc/firmware/yamato_pm4.fw ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/etc/mm_property.conf ../../../vendor/htc/$DEVICE/proprietary
-adb pull /system/etc/pvasflocal.cfg ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/etc/vomeComp.cfg ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/etc/vomeplay.cfg ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/etc/voVidDec.dat ../../../vendor/htc/$DEVICE/proprietary
@@ -57,6 +56,8 @@ adb pull /system/lib/egl/libGLESv1_CM_adreno200.so ../../../vendor/htc/$DEVICE/p
 adb pull /system/lib/egl/libGLESv2_adreno200.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/egl/libq3dtools_adreno200.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/hw/gralloc.msm7x30.so ../../../vendor/htc/$DEVICE/proprietary
+adb pull /system/lib/hw/sensors.glacier.so ../../../vendor/htc/$DEVICE/proprietary
+adb pull /system/lib/libaudio.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libaudioalsa.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libaudioeq.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libcamera.so ../../../vendor/htc/$DEVICE/proprietary
@@ -65,6 +66,8 @@ adb pull /system/lib/libgsl.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libhtc_acoustic.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libHTC_mm_property.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libhtc_ril.so ../../../vendor/htc/$DEVICE/proprietary
+adb pull /system/lib/librilswitch.so ../../../vendor/htc/$DEVICE/proprietary
+adb pull /system/lib/libganril.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libloc_api-rpc.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libloc_api.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libmmipl.so ../../../vendor/htc/$DEVICE/proprietary
@@ -74,8 +77,6 @@ adb pull /system/lib/liboemcamera.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libOmxCore.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libOmxVdec.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libOmxVenc.so ../../../vendor/htc/$DEVICE/proprietary
-adb pull /system/lib/libomx_wmadec_sharedlibrary.so ../../../vendor/htc/$DEVICE/proprietary
-adb pull /system/lib/libomx_wmvdec_sharedlibrary.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libqcomm_omx.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libvoAACDec.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libvoAMRNBDec.so ../../../vendor/htc/$DEVICE/proprietary
@@ -116,6 +117,7 @@ PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/libloc_api.so:obj/lib/libloc_api.so \\
     vendor/htc/__DEVICE__/proprietary/libloc_api-rpc.so:obj/lib/libloc_api-rpc.so \\
     vendor/htc/__DEVICE__/proprietary/libcamera.so:obj/lib/libcamera.so \\
+    vendor/htc/__DEVICE__/proprietary/libaudio.so:obj/lib/libaudio.so \\
     vendor/htc/__DEVICE__/proprietary/libaudioalsa.so:obj/lib/libaudioalsa.so
 
 # All the blobs necessary for passion
@@ -127,7 +129,7 @@ PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/akmd:/system/bin/akmd \\
     vendor/htc/__DEVICE__/proprietary/AudioBTID.csv:/system/etc/AudioBTID.csv \\
     vendor/htc/__DEVICE__/proprietary/awb_camera:/system/bin/awb_camera \\
-    vendor/htc/__DEVICE__/proprietary/bcm4329.hcd:/system/etc/firmware/bcm4329.hcd \\
+    vendor/htc/__DEVICE__/proprietary/BCM4329B1_002.002.023.0511.0538.hcd:/system/etc/firmware/BCM4329B1_002.002.023.0511.0538.hcd \\
     vendor/htc/__DEVICE__/proprietary/bma150_usr:/system/bin/bma150_usr \\
     vendor/htc/__DEVICE__/proprietary/default.acdb:/system/etc/firmware/default.acdb \\
     vendor/htc/__DEVICE__/proprietary/default_org.acdb:/system/etc/firmware/default_org.acdb \\
@@ -135,6 +137,8 @@ PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/fw_bcm4329_apsta.bin:/system/etc/firmware/fw_bcm4329_apsta.bin \\
     vendor/htc/__DEVICE__/proprietary/htc_ebdlogd:/system/bin/htc_ebdlogd \\
     vendor/htc/__DEVICE__/proprietary/gralloc.msm7x30.so:/system/lib/hw/gralloc.msm7x30.so \\
+    vendor/htc/__DEVICE__/proprietary/sensors.glacier.so:/system/lib/hw/sensors.glacier.so \\
+    vendor/htc/__DEVICE__/proprietary/libaudio.so:/system/lib/libaudio.so \\
     vendor/htc/__DEVICE__/proprietary/libaudioalsa.so:/system/lib/libaudioalsa.so \\
     vendor/htc/__DEVICE__/proprietary/libaudioeq.so:/system/lib/libaudioeq.so \\
     vendor/htc/__DEVICE__/proprietary/libcamera.so:/system/lib/libcamera.so \\
@@ -146,6 +150,8 @@ PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/libhtc_acoustic.so:/system/lib/libhtc_acoustic.so \\
     vendor/htc/__DEVICE__/proprietary/libHTC_mm_property.so:/system/lib/libHTC_mm_property.so \\
     vendor/htc/__DEVICE__/proprietary/libhtc_ril.so:/system/lib/libhtc_ril.so \\
+    vendor/htc/__DEVICE__/proprietary/libganril.so:/system/lib/libganril.so \\
+    vendor/htc/__DEVICE__/proprietary/librilswitch.so:/system/lib/librilswitch.so \\
     vendor/htc/__DEVICE__/proprietary/libloc_api-rpc.so:/system/lib/libloc_api-rpc.so \\
     vendor/htc/__DEVICE__/proprietary/libloc_api.so:/system/lib/libloc_api.so \\
     vendor/htc/__DEVICE__/proprietary/libmmipl.so:/system/lib/libmmipl.so \\
@@ -155,8 +161,6 @@ PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/libOmxCore.so:/system/lib/libOmxCore.so \\
     vendor/htc/__DEVICE__/proprietary/libOmxVdec.so:/system/lib/libOmxVdec.so \\
     vendor/htc/__DEVICE__/proprietary/libOmxVenc.so:/system/lib/libOmxVenc.so \\
-    vendor/htc/__DEVICE__/proprietary/libomx_wmadec_sharedlibrary.so:/system/lib/libomx_wmadec_sharedlibrary.so \\
-    vendor/htc/__DEVICE__/proprietary/libomx_wmvdec_sharedlibrary.so:/system/lib/libomx_wmvdec_sharedlibrary.so \\
     vendor/htc/__DEVICE__/proprietary/libq3dtools_adreno200.so:/system/lib/egl/libq3dtools_adreno200.so \\
     vendor/htc/__DEVICE__/proprietary/libqcomm_omx.so:/system/lib/libqcomm_omx.so \\
     vendor/htc/__DEVICE__/proprietary/libvoAACDec.so:/system/lib/libvoAACDec.so \\
@@ -179,7 +183,6 @@ PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/lsc_camera:/system/bin/lsc_camera \\
     vendor/htc/__DEVICE__/proprietary/rmt_storage:/system/bin/rmt_storage \\
     vendor/htc/__DEVICE__/proprietary/mm_property.conf:/system/etc/mm_property.conf \\
-    vendor/htc/__DEVICE__/proprietary/pvasflocal.cfg:/system/etc/pvasflocal.cfg \\
     vendor/htc/__DEVICE__/proprietary/vidc_720p_command_control.fw:/system/etc/firmware/vidc_720p_command_control.fw \\
     vendor/htc/__DEVICE__/proprietary/vidc_720p_h263_dec_mc.fw:/system/etc/firmware/vidc_720p_h263_dec_mc.fw \\
     vendor/htc/__DEVICE__/proprietary/vidc_720p_h264_dec_mc.fw:/system/etc/firmware/vidc_720p_h264_dec_mc.fw \\
@@ -188,7 +191,7 @@ PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/vidc_720p_mp4_dec_mc.fw:/system/etc/firmware/vidc_720p_mp4_dec_mc.fw \\
     vendor/htc/__DEVICE__/proprietary/vidc_720p_mp4_enc_mc.fw:/system/etc/firmware/vidc_720p_mp4_enc_mc.fw \\
     vendor/htc/__DEVICE__/proprietary/vidc_720p_vc1_dec_mc.fw:/system/etc/firmware/vidc_720p_vc1_dec_mc.fw \\
-    vendor/htc/__DEVICE__/proprietary/Vision_SPK.acdb:/system/etc/firmware/Vision_SPK.acdb \\
+    vendor/htc/__DEVICE__/proprietary/Glacier_SPK.acdb:/system/etc/firmware/Glacier_SPK.acdb \\
     vendor/htc/__DEVICE__/proprietary/vomeComp.cfg:/system/etc/vomeComp.cfg \\
     vendor/htc/__DEVICE__/proprietary/vomeplay.cfg:/system/etc/vomeplay.cfg \\
     vendor/htc/__DEVICE__/proprietary/voVidDec.dat:/system/etc/voVidDec.dat \\
