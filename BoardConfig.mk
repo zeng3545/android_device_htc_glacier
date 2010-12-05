@@ -27,6 +27,7 @@ BOARD_USES_GENERIC_AUDIO := false
 BOARD_PREBUILT_LIBAUDIO := true
 BOARD_CAMERA_USE_GETBUFFERINFO := true
 BOARD_OVERLAY_FORMAT_YCbCr_420_SP := true
+BOARD_USE_NEW_LIBRIL_HTC := true
 
 BOARD_KERNEL_CMDLINE := no_console_suspend=1
 BOARD_KERNEL_BASE := 0x04000000
@@ -35,11 +36,20 @@ BOARD_PAGE_SIZE := 0x00001000
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
-BOARD_VENDOR_QCOM_AMSS_VERSION := 3200
+BOARD_HAVE_FM_RADIO := true
+BOARD_USE_BROADCOM_FM_VOLUME_HACK := true
 
-BOARD_VENDOR_USE_AKMD := akm8973
+BOARD_VENDOR_QCOM_AMSS_VERSION := 1200
+
+BOARD_VENDOR_USE_AKMD := akm8975
 
 BOARD_EGL_CFG := device/htc/glacier/egl.cfg
+
+BOARD_USES_QCOM_LIBS := true
+
+BOARD_USE_HTC_USB_FUNCTION_SWITCH := true
+
+BOARD_USE_BROKEN_INJECT_XTRA_HACK := true
 
 # fix this up by examining /proc/mtd on a running device
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00400000
@@ -59,22 +69,3 @@ BOARD_SDCARD_DEVICE_SECONDARY := /dev/block/mmcblk1
 BOARD_SDEXT_DEVICE := /dev/block/mmcblk1p2
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true
-
-# Below is a sample of how you can tweak the mount points using the board config.
-# This is for the Samsung Galaxy S.
-# Feel free to tweak or remove this code.
-# If you want to add/tweak a mount point, the BOARD_X_FILESYSTEM_OPTIONS are optional.
-#BOARD_DATA_DEVICE := /dev/block/mmcblk0p2
-#BOARD_DATA_FILESYSTEM := auto
-#BOARD_DATA_FILESYSTEM_OPTIONS := llw,check=no,nosuid,nodev
-#BOARD_HAS_DATADATA := true
-#BOARD_DATADATA_DEVICE := /dev/block/stl10
-#BOARD_DATADATA_FILESYSTEM := auto
-#BOARD_DATADATA_FILESYSTEM_OPTIONS := llw,check=no,nosuid,nodev
-#BOARD_SYSTEM_DEVICE := /dev/block/stl9
-#BOARD_SYSTEM_FILESYSTEM := auto
-#BOARD_SYSTEM_FILESYSTEM_OPTIONS := llw,check=no
-#BOARD_CACHE_DEVICE := /dev/block/stl11
-#BOARD_CACHE_FILESYSTEM := auto
-#BOARD_CACHE_FILESYSTEM_OPTIONS := llw,check=no,nosuid,nodev
-#BOARD_SDEXT_DEVICE := /dev/block/mmcblk1p2

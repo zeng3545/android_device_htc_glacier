@@ -24,7 +24,7 @@
          config_hardware_automatic_brightness_available is not set, so we will use software implementation -->
     <bool name="config_automatic_brightness_available">true</bool>
 
-    <!-- disable menu hard key on Passion in non-pattern lockscreen -->
+    <!-- disable menu hard key on Glacier in non-pattern lockscreen -->
     <bool name="config_disableMenuKeyInLockScreen">true</bool>
 
     <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
@@ -54,15 +54,15 @@
          than the size of the config_autoBrightnessLevels array.
     -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>89</item>
-        <item>89</item>
-        <item>126</item>
-        <item>164</item>
-        <item>164</item>
-        <item>164</item>
-        <item>187</item>
+        <item>77</item>
+        <item>77</item>
+        <item>77</item>
+        <item>77</item>
+        <item>107</item>
+        <item>130</item>
+        <item>160</item>
+        <item>285</item>
         <item>210</item>
-        <item>233</item>
         <item>255</item>
     </integer-array>
 
@@ -71,10 +71,10 @@
          than the size of the config_autoBrightnessLevels array.
     -->
     <integer-array name="config_autoBrightnessButtonBacklightValues">
-        <item>255</item>
-        <item>255</item>
-        <item>255</item>
-        <item>255</item>
+        <item>30</item>
+        <item>30</item>
+        <item>30</item>
+        <item>30</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -86,7 +86,6 @@
     <!-- Array of output values for keyboard backlight corresponding to the LUX values
          in the config_autoBrightnessLevels array.  This array should have size one greater
          than the size of the config_autoBrightnessLevels array.
-         Passion has no keyboard so all values are zero.
     -->
     <integer-array name="config_autoBrightnessKeyboardBacklightValues">
         <item>255</item>
@@ -105,14 +104,14 @@
          specified -->
     <string name="default_wallpaper_component">com.android.wallpaper/.nexus.NexusWallpaper</string>
 
-    <integer name="config_deskDockKeepsScreenOn">0</integer>
+    <integer name="config_deskDockKeepsScreenOn">1</integer>
     <integer name="config_carDockKeepsScreenOn">1</integer>
 
-    <!-- Default color for notification LED is white -->
-    <color name="config_defaultNotificationColor">#ffffffff</color>
+    <!-- Default color for notification LED is green -->
+    <color name="config_defaultNotificationColor">#ff00ff00</color>
 
-    <!-- Default blink frequency for notification LED is 9 seconds. -->
-    <integer name="config_defaultNotificationLedOff">9000</integer>
+    <!-- Default blink frequency for notification LED is 2 seconds. -->
+    <integer name="config_defaultNotificationLedOff">2000</integer>
 
     <!-- Component name of the service providing network location support. -->
     <string name="config_networkLocationProvider">com.google.android.location.NetworkLocationProvider</string>
@@ -176,7 +175,7 @@
 
     <!-- Vibrator pattern for a very short but reliable vibration for soft keyboard tap -->
     <integer-array name="config_keyboardTapVibePattern">
-        <item>30</item>
+        <item>40</item>
     </integer-array>
 
     <!-- Component name of the default wallpaper. This will be ImageWallpaper if not 

@@ -35,12 +35,12 @@ $(call inherit-product-if-exists, vendor/htc/glacier/glacier-vendor.mk)
 
 ## (3)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.com.google.clientidbase=android-htc \
+    ro.com.google.clientidbase=android-tmobile-us \
     ro.com.google.clientidbase.vs=android-hms-tmobile-us \
     ro.com.google.clientidbase.ms=android-hms-tmobile-us \
     ro.com.google.locationfeatures=1 \
     ro.com.google.networklocation=1 \
-    ro.com.google.gmsversion=2.2_r5 \
+    ro.com.google.gmsversion=2.2_r6 \
     ro.setupwizard.enable_bypass=1 \
     dalvik.vm.lockprof.threshold=500 \
     dalvik.vm.dexopt-flags=m=y
@@ -69,7 +69,9 @@ PRODUCT_COPY_FILES += \
     device/htc/glacier/media_profiles.xml:system/etc/media_profiles.xml
 
 PRODUCT_PACKAGES += \
-    librs_jni
+    librs_jni \
+    lights.msm7x30 \
+    sensors.glacier
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
@@ -84,7 +86,7 @@ PRODUCT_COPY_FILES += \
 
 # Firmware
 PRODUCT_COPY_FILES += \
-    device/htc/glacier/firmware/BCM4329B1_002.002.023.0511.0538.hcd:system/etc/firmware/BCM4329B1_002.002.023.0511.0538.hcd \
+    device/htc/glacier/firmware/BCM4329B1_002.002.023.0511.0538.hcd:system/etc/firmware/bcm4329.hcd \
     device/htc/glacier/firmware/fw_bcm4329.bin:system/etc/firmware/fw_bcm4329.bin \
     device/htc/glacier/firmware/default.acdb:system/etc/firmware/default.acdb \
     device/htc/glacier/firmware/default_org.acdb:system/etc/firmware/default_org.acdb \
@@ -100,7 +102,7 @@ PRODUCT_COPY_FILES += \
     device/htc/glacier/firmware/vidc_720p_vc1_dec_mc.fw:system/etc/firmware/vidc_720p_vc1_dec_mc.fw \
     device/htc/glacier/firmware/Glacier_SPK.acdb:system/etc/firmware/Glacier_SPK.acdb \
     device/htc/glacier/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
-    device/htc/glacier/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.f
+    device/htc/glacier/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw
 
 # Certificates
 PRODUCT_COPY_FILES += \
@@ -131,8 +133,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
 PRODUCT_COPY_FILES += \
-    device/htc/glacier/modules/bcm4329.ko:system/lib/modules/bcm4329.ko \
-    device/htc/glacier/modules/kineto_gan.ko:system/lib/modules/kinecto_gan.ko
+    device/htc/glacier/modules/bcm4329.ko:system/lib/modules/bcm4329.ko
 
 $(call inherit-product-if-exists, vendor/htc/glacier/glacier-vendor.mk)
 
