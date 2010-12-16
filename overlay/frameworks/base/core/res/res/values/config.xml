@@ -61,7 +61,7 @@
         <item>107</item>
         <item>130</item>
         <item>160</item>
-        <item>285</item>
+        <item>185</item>
         <item>210</item>
         <item>255</item>
     </integer-array>
@@ -181,5 +181,9 @@
     <!-- Component name of the default wallpaper. This will be ImageWallpaper if not 
          specified -->
     <string name="default_wallpaper_component">com.android.wallpaper/.nexus.NexusWallpaper</string>
+
+    <!-- Handle notifications differently if device only uses an amber/green
+    LED. This also needs a liblights module that enables them accordingly. -->
+    <bool name="config_amber_green_light">true</bool>
 
 </resources>
