@@ -70,7 +70,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     librs_jni \
-    lights.msm7x30 \
+    lights.glacier \
     sensors.glacier
 
 # Keylayouts
