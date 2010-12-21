@@ -27,4 +27,6 @@ LOCAL_SHARED_LIBRARIES := liblog
 
 LOCAL_MODULE := lights.glacier
 
+LOCAL_MODULE_TAGS := optional
+
 include $(BUILD_SHARED_LIBRARY)

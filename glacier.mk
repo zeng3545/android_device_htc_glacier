@@ -28,7 +28,8 @@ PRODUCT_COPY_FILES += \
 ## (1) First, the most specific values, i.e. the aspects that are specific to GSM
 
 PRODUCT_COPY_FILES += \
-    device/htc/glacier/init.glacier.rc:root/init.glacier.rc
+    device/htc/glacier/init.glacier.rc:root/init.glacier.rc \
+    device/htc/vision/ueventd.vision.rc:root/ueventd.glacier.rc
 
 ## (2) Also get non-open-source GSM-specific aspects if available
 $(call inherit-product-if-exists, vendor/htc/glacier/glacier-vendor.mk)
@@ -71,7 +72,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     librs_jni \
     lights.glacier \
-    sensors.glacier
+    sensors.glacier \
+    gralloc.msm7x30 \
+    overlay.default \
+    gps.glacier \
+    libOmxCore \
+    libOmxVenc \
+    libOmxVdec
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
