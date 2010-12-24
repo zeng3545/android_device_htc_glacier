@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- This file lists front facing camera libraries for applications to link to. -->
-<permissions>
-    <library name="com.htc.hardware.twinCamDevice"
-            file="/system/framework/com.htc.hardware.twinCamDevice.jar" />
-</permissions>

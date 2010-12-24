@@ -61,8 +61,6 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
     frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    device/htc/glacier/etc/com.htc.hardware.glacier.xml:system/etc/permissions/com.htc.hardware.glacier.xml \
-    device/htc/glacier/etc/com.htc.hardware.twincamdevice.xml:system/etc/permissions/com.htc.hardware.twincamdevice.xml \
     frameworks/base/data/etc/platform.xml:system/etc/permissions/platform.xml 
 
 # media config xml file
@@ -110,13 +108,6 @@ PRODUCT_COPY_FILES += \
     device/htc/glacier/firmware/Glacier_SPK.acdb:system/etc/firmware/Glacier_SPK.acdb \
     device/htc/glacier/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
     device/htc/glacier/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw
-
-# Certificates
-PRODUCT_COPY_FILES += \
-    device/htc/glacier/certs/T-Mobile_USA_Intermediate_CA_01.der:system/etc/T-Mobile_USA_Intermediate_CA_01.der \
-    device/htc/glacier/certs/T-Mobile_USA_Issuer_CA_01.der:system/etc/T-Mobile_USA_Issuer_CA_01.der \
-    device/htc/glacier/certs/T-Mobile_USA_Issuer_CA_02.der:system/etc/T-Mobile_USA_Issuer_CA_02.der \
-    device/htc/glacier/certs/T-Mobile_USA_Root_CA.der:system/etc/T-Mobile_USA_Root_CA.der
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
