@@ -53,6 +53,9 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 1240
 # Use RGB565 surfaces until userspace drivers are upgraded
 BOARD_NO_RGBX_8888 := true
 
+# Use nasty hack to make Kineto work
+BOARD_USE_KINETO_COMPATIBILITY := true
+
 # fix this up by examining /proc/mtd on a running device
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 4194304
