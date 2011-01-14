@@ -90,6 +90,7 @@ PRODUCT_COPY_FILES += \
 # Firmware
 PRODUCT_COPY_FILES += \
     device/htc/glacier/firmware/bcm4329.hcd:system/etc/firmware/bcm4329.hcd \
+    device/htc/glacier/firmware/fw_bcm4329_5GHz.bin:system/vendor/firmware/fw_bcm4329_5GHz.bin \
     device/htc/glacier/firmware/default.acdb:system/etc/firmware/default.acdb \
     device/htc/glacier/firmware/default_org.acdb:system/etc/firmware/default_org.acdb \
     device/htc/glacier/firmware/default_org_WA.acdb:system/etc/firmware/default_org_WA.acdb \
