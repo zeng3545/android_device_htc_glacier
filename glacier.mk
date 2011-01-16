@@ -106,6 +106,10 @@ PRODUCT_COPY_FILES += \
     device/htc/glacier/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
     device/htc/glacier/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw
 
+# A "special" libcrypto for Kineto
+PRODUCT_COPY_FILES += \
+    device/htc/glacier/prebuilt/libcryp98.so:system/lib/libcryp98.so
+
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
