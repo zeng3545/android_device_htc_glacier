@@ -50,6 +50,8 @@ adb pull /system/lib/libmmipl.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libmmjpeg.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/liboemcamera.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/librilswitch.so ../../../vendor/htc/$DEVICE/proprietary
+adb pull /system/app/Swype.apk ../../../vendor/htc/$DEVICE/proprietary
+adb pull /system/lib/libSwypeCore.so ../../../vendor/htc/$DEVICE/proprietary
 
 (cat << EOF) | sed s/__DEVICE__/$DEVICE/g > ../../../vendor/htc/$DEVICE/$DEVICE-vendor-blobs.mk
 # Copyright (C) 2010 The Android Open Source Project
@@ -107,7 +109,9 @@ PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/logcat2:/system/bin/logcat2 \\
     vendor/htc/__DEVICE__/proprietary/lsc_camera:/system/bin/lsc_camera \\
     vendor/htc/__DEVICE__/proprietary/rmt_storage:/system/bin/rmt_storage \\
-    vendor/htc/__DEVICE__/proprietary/vpimg:/system/etc/vpimg
+    vendor/htc/__DEVICE__/proprietary/vpimg:/system/etc/vpimg \\
+    vendor/htc/__DEVICE__/proprietary/Swype.apk:/system/app/Swype.apk \\
+    vendor/htc/__DEVICE__/proprietary/libSwypeCore.so:/system/lib/libSwypeCore.so
 EOF
 
 ./setup-makefiles.sh
