@@ -97,7 +97,7 @@ PRODUCT_COPY_FILES += \
 #PRODUCT_COPY_FILES += \
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/htc/glacier/kernel
+LOCAL_KERNEL := device/htc/msm7x30-common/msm7230/kernel
 else
 LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
@@ -106,7 +106,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
 PRODUCT_COPY_FILES += \
-    device/htc/glacier/modules/bcm4329.ko:system/lib/modules/bcm4329.ko
+    device/htc/msm7x30-common/msm7230/bcm4329.ko:system/lib/modules/bcm4329.ko
 
 $(call inherit-product-if-exists, vendor/htc/glacier/glacier-vendor.mk)
 
