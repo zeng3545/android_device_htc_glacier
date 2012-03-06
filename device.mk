@@ -1,0 +1,128 @@
+#
+# Copyright (C) 2011 The CyanogenMod Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+
+# The gps config appropriate for this device
+PRODUCT_COPY_FILES += \
+    device/htc/glacier/gps.conf:system/etc/gps.conf
+
+## (1) First, the most specific values, i.e. the aspects that are specific to GSM
+
+PRODUCT_COPY_FILES += \
+    device/htc/glacier/init.glacier.rc:root/init.glacier.rc \
+    device/htc/glacier/ueventd.glacier.rc:root/ueventd.glacier.rc
+
+## (2) Also get non-open-source GSM-specific aspects if available
+$(call inherit-product-if-exists, vendor/htc/glacier/device-vendor.mk)
+
+## (3)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.com.google.locationfeatures=1 \
+    ro.com.google.networklocation=1 \
+    ro.com.google.gmsversion=2.2_r6 \
+    ro.setupwizard.enable_bypass=1 \
+    dalvik.vm.lockprof.threshold=500 \
+    dalvik.vm.dexopt-flags=m=y
+
+# Override /proc/sys/vm/dirty_ratio on UMS
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vold.umsdirtyratio=20
+
+DEVICE_PACKAGE_OVERLAYS += device/htc/glacier/overlay
+
+PRODUCT_COPY_FILES += \
+    frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/base/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml
+
+PRODUCT_PACKAGES += \
+    lights.glacier \
+    sensors.glacier \
+    gps.glacier
+
+# Keylayouts
+PRODUCT_COPY_FILES += \
+    device/htc/glacier/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
+    device/htc/glacier/keylayout/curcial-oj.kl:system/usr/keylayout/curcial-oj.kl \
+    device/htc/glacier/keylayout/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl \
+    device/htc/glacier/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
+    device/htc/glacier/keylayout/glacier-keypad.kl:system/usr/keylayout/glacier-keypad.kl \
+    device/htc/glacier/keylayout/atmel-touchscreen.kl:system/usr/keylayout/atmel-touchscreen.kl \
+    device/htc/glacier/keylayout/elan-touchscreen.kl:system/usr/keylayout/elan-touchscreen.kl \
+    device/htc/glacier/keylayout/synaptics-rmi-touchscreen.kl:system/usr/keylayout/synaptics-rmi-touchscreen.kl
+
+# IDC Files
+PRODUCT_COPY_FILES += \
+    device/htc/glacier/idc/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc \
+    device/htc/glacier/idc/atmel-touchscreen.idc:system/usr/idc/elan-touchscreen.idc \
+    device/htc/glacier/idc/atmel-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
+    device/htc/glacier/idc/curcial-oj.idc:system/usr/idc/curcial-oj.idc \
+    device/htc/glacier/idc/glacier-keypad.idc:system/usr/idc/glacier-keypad.idc
+
+# Keychars
+PRODUCT_COPY_FILES += \
+    device/htc/glacier/keychars/atmel-touchscreen.kcm:system/usr/keychars/atmel-touchscreen.kcm \
+    device/htc/glacier/keychars/elan-touchscreen.kcm:system/usr/keychars/elan-touchscreen.kcm \
+    device/htc/glacier/keychars/synaptics-rmi-touchscreen.kcm:system/usr/keychars/synaptics-rmi-touchscreen.kcm
+
+# Firmware
+PRODUCT_COPY_FILES += \
+    device/htc/glacier/firmware/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd \
+    device/htc/glacier/firmware/default.acdb:system/etc/firmware/default.acdb \
+    device/htc/glacier/firmware/default_org.acdb:system/etc/firmware/default_org.acdb \
+    device/htc/glacier/firmware/Glacier_SPK.acdb:system/etc/firmware/Glacier_SPK.acdb \
+
+# Certificates
+PRODUCT_COPY_FILES += \
+    device/htc/glacier/certs/T-Mobile_USA_Intermediate_CA_01.der:system/etc/T-Mobile_USA_Intermediate_CA_01.der \
+    device/htc/glacier/certs/T-Mobile_USA_Issuer_CA_01.der:system/etc/T-Mobile_USA_Issuer_CA_01.der \
+    device/htc/glacier/certs/T-Mobile_USA_Issuer_CA_02.der:system/etc/T-Mobile_USA_Issuer_CA_02.der \
+    device/htc/glacier/certs/T-Mobile_USA_Root_CA.der:system/etc/T-Mobile_USA_Root_CA.der
+
+PRODUCT_COPY_FILES += \
+    device/htc/glacier/vold.fstab:system/etc/vold.fstab
+
+# media config xml file
+PRODUCT_COPY_FILES += \
+    device/htc/msm7x30-common/media_profiles.xml:system/etc/media_profiles.xml
+
+# Kernel modules
+#PRODUCT_COPY_FILES += \
+
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+LOCAL_KERNEL := device/htc/msm7x30-common/msm7230/kernel
+else
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_KERNEL):kernel
+
+PRODUCT_COPY_FILES += \
+    device/htc/msm7x30-common/msm7230/bcm4329.ko:system/lib/modules/bcm4329.ko
+
+# stuff common to all HTC phones
+$(call inherit-product, device/htc/common/common.mk)
+
+# common msm7x30 configs
+$(call inherit-product, device/htc/msm7x30-common/msm7x30.mk)
+
+# htc audio settings
+$(call inherit-product, device/htc/ace/media_htcaudio.mk)
+
+$(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
+
+$(call inherit-product-if-exists, vendor/htc/ace/device-vendor.mk)
