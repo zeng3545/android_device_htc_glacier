@@ -6,7 +6,7 @@ ro.sf.lcd_density=240
 debug.fb.rgb565=0
 debug.sf.hw=1
 persist.sys.ui.hw=1
-debug.composition.type=cpu
+debug.composition.type=mdp
 
 # Qualcomm display settings
 debug.enabletr=false

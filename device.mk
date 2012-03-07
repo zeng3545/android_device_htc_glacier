@@ -38,15 +38,20 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.lockprof.threshold=500 \
     dalvik.vm.dexopt-flags=m=y
 
-# Override /proc/sys/vm/dirty_ratio on UMS
+# A1026
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vold.umsdirtyratio=20
+      media.a1026.nsForVoiceRec = 0 \
+      media.a1026.enableA1026 = 1
 
-DEVICE_PACKAGE_OVERLAYS += device/htc/glacier/overlay
+#DEVICE_PACKAGE_OVERLAYS += device/htc/glacier/overlay
 
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/base/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml
+
+# gsm config xml file
+PRODUCT_COPY_FILES += \
+    device/htc/glacier/voicemail-conf.xml:system/etc/voicemail-conf.xml
 
 PRODUCT_PACKAGES += \
     lights.glacier \
@@ -85,13 +90,6 @@ PRODUCT_COPY_FILES += \
     device/htc/glacier/firmware/default_org.acdb:system/etc/firmware/default_org.acdb \
     device/htc/glacier/firmware/Glacier_SPK.acdb:system/etc/firmware/Glacier_SPK.acdb \
 
-# Certificates
-PRODUCT_COPY_FILES += \
-    device/htc/glacier/certs/T-Mobile_USA_Intermediate_CA_01.der:system/etc/T-Mobile_USA_Intermediate_CA_01.der \
-    device/htc/glacier/certs/T-Mobile_USA_Issuer_CA_01.der:system/etc/T-Mobile_USA_Issuer_CA_01.der \
-    device/htc/glacier/certs/T-Mobile_USA_Issuer_CA_02.der:system/etc/T-Mobile_USA_Issuer_CA_02.der \
-    device/htc/glacier/certs/T-Mobile_USA_Root_CA.der:system/etc/T-Mobile_USA_Root_CA.der
-
 PRODUCT_COPY_FILES += \
     device/htc/glacier/vold.fstab:system/etc/vold.fstab
 
@@ -114,6 +112,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/msm7x30-common/msm7230/bcm4329.ko:system/lib/modules/bcm4329.ko
 
+# High-density art, but English locale
+PRODUCT_LOCALES += en
+PRODUCT_AAPT_CONFIG := normal hdpi
+PRODUCT_AAPT_PREF_CONFIG := hdpi
+
 # stuff common to all HTC phones
 $(call inherit-product, device/htc/common/common.mk)
 
@@ -121,8 +124,8 @@ $(call inherit-product, device/htc/common/common.mk)
 $(call inherit-product, device/htc/msm7x30-common/msm7x30.mk)
 
 # htc audio settings
-$(call inherit-product, device/htc/ace/media_htcaudio.mk)
+$(call inherit-product, device/htc/glacier/media_htcaudio.mk)
 
 $(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
 
-$(call inherit-product-if-exists, vendor/htc/ace/device-vendor.mk)
+$(call inherit-product-if-exists, vendor/htc/glacier/device-vendor.mk)
