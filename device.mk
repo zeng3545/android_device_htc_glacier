@@ -39,11 +39,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dexopt-flags=m=y
 
 # A1026
-PRODUCT_PROPERTY_OVERRIDES += \
-      media.a1026.nsForVoiceRec = 0 \
-      media.a1026.enableA1026 = 1
+#PRODUCT_PROPERTY_OVERRIDES += \
+#      media.a1026.nsForVoiceRec = 0 \
+#      media.a1026.enableA1026 = 1
 
-#DEVICE_PACKAGE_OVERLAYS += device/htc/glacier/overlay
+DEVICE_PACKAGE_OVERLAYS += device/htc/glacier/overlay
 
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
@@ -88,14 +88,9 @@ PRODUCT_COPY_FILES += \
     device/htc/glacier/firmware/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd \
     device/htc/glacier/firmware/default.acdb:system/etc/firmware/default.acdb \
     device/htc/glacier/firmware/default_org.acdb:system/etc/firmware/default_org.acdb \
-    device/htc/glacier/firmware/Glacier_SPK.acdb:system/etc/firmware/Glacier_SPK.acdb \
 
 PRODUCT_COPY_FILES += \
     device/htc/glacier/vold.fstab:system/etc/vold.fstab
-
-# media config xml file
-PRODUCT_COPY_FILES += \
-    device/htc/msm7x30-common/media_profiles.xml:system/etc/media_profiles.xml
 
 # Kernel modules
 #PRODUCT_COPY_FILES += \
