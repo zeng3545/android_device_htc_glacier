@@ -42,6 +42,10 @@ BOARD_KERNEL_PAGE_SIZE := 4096
 
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := glacier
 
+# Wifi Specific Defines
+WIFI_DRIVER_MODULE_ARG := "firmware_path=/vendor/firmware/fw_bcm4329.bin nvram_path=/proc/calibration iface_name=eth0"
+TARGET_CUSTOM_IFACE := eth0
+
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 4194304
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 435941376

@@ -6,29 +6,18 @@ ro.sf.lcd_density=240
 debug.fb.rgb565=0
 debug.sf.hw=1
 persist.sys.ui.hw=1
-debug.composition.type=cpu
+debug.composition.type=mdp
 
 # Qualcomm display settings
 debug.enabletr=false
-com.qc.hardware=false
+com.qc.hardware=true
 
 # Camera
 ro.camera.preview=true
 
-# RIL path
+# RIL
 rild.libpath=/system/lib/libhtc_ril.so
-ro.telephony.ril.v3=signalstrength
-
-# Wifi Calling (Disabled for right now)
-# ro.ril.enable.ganlite=1
-# rild.libpath.ganlite=/system/lib/librilswitch.so
-# rilswitch.vendorlibpath=/system/lib/libhtc_ril.so
-# rilswitch.ganlibpath=/system/lib/libganril.so
-# rild.libpath=/system/lib/librilswitch.so
-
-# Modify MMS APN retry timer from 5s to 2s.
-ro.gsm.2nd_data_retry_config = max_retries=3, 2000, 2000, 2000
-
+ro.telephony.ril.v3=1
 ro.ril.enable.a53=1
 ro.ril.enable.dtm=1
 ro.ril.gprsclass=12
@@ -38,6 +27,9 @@ ro.ril.hsxpa=2
 ro.ril.disable.fd.plmn.prefix=23402,23410,23411
 ro.ril.enable.sdr=0
 ro.ril.enable.gea3=0
+
+# Modify MMS APN retry timer from 5s to 2s.
+ro.gsm.2nd_data_retry_config = max_retries=3, 2000, 2000, 2000
 
 net.tcp.buffersize.hsdpa = 4094,87380,393216,4096,16384,110208
 

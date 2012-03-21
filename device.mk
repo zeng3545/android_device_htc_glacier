@@ -33,15 +33,10 @@ $(call inherit-product-if-exists, vendor/htc/glacier/device-vendor.mk)
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.google.locationfeatures=1 \
     ro.com.google.networklocation=1 \
-    ro.com.google.gmsversion=2.2_r6 \
+    ro.com.google.gmsversion=2.3_r3 \
     ro.setupwizard.enable_bypass=1 \
     dalvik.vm.lockprof.threshold=500 \
     dalvik.vm.dexopt-flags=m=y
-
-# A1026
-#PRODUCT_PROPERTY_OVERRIDES += \
-#      media.a1026.nsForVoiceRec = 0 \
-#      media.a1026.enableA1026 = 1
 
 DEVICE_PACKAGE_OVERLAYS += device/htc/glacier/overlay
 
@@ -54,9 +49,9 @@ PRODUCT_COPY_FILES += \
     device/htc/glacier/voicemail-conf.xml:system/etc/voicemail-conf.xml
 
 PRODUCT_PACKAGES += \
+    gps.glacier \
     lights.glacier \
-    sensors.glacier \
-    gps.glacier
+    sensors.glacier
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
@@ -66,26 +61,19 @@ PRODUCT_COPY_FILES += \
     device/htc/glacier/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
     device/htc/glacier/keylayout/glacier-keypad.kl:system/usr/keylayout/glacier-keypad.kl \
     device/htc/glacier/keylayout/atmel-touchscreen.kl:system/usr/keylayout/atmel-touchscreen.kl \
-    device/htc/glacier/keylayout/elan-touchscreen.kl:system/usr/keylayout/elan-touchscreen.kl \
-    device/htc/glacier/keylayout/synaptics-rmi-touchscreen.kl:system/usr/keylayout/synaptics-rmi-touchscreen.kl
 
 # IDC Files
 PRODUCT_COPY_FILES += \
     device/htc/glacier/idc/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc \
-    device/htc/glacier/idc/atmel-touchscreen.idc:system/usr/idc/elan-touchscreen.idc \
-    device/htc/glacier/idc/atmel-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
     device/htc/glacier/idc/curcial-oj.idc:system/usr/idc/curcial-oj.idc \
     device/htc/glacier/idc/glacier-keypad.idc:system/usr/idc/glacier-keypad.idc
 
 # Keychars
 PRODUCT_COPY_FILES += \
     device/htc/glacier/keychars/atmel-touchscreen.kcm:system/usr/keychars/atmel-touchscreen.kcm \
-    device/htc/glacier/keychars/elan-touchscreen.kcm:system/usr/keychars/elan-touchscreen.kcm \
-    device/htc/glacier/keychars/synaptics-rmi-touchscreen.kcm:system/usr/keychars/synaptics-rmi-touchscreen.kcm
 
 # Firmware
 PRODUCT_COPY_FILES += \
-    device/htc/glacier/firmware/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd \
     device/htc/glacier/firmware/default.acdb:system/etc/firmware/default.acdb \
     device/htc/glacier/firmware/default_org.acdb:system/etc/firmware/default_org.acdb \
 
