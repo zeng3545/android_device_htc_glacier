@@ -12,9 +12,6 @@ debug.composition.type=mdp
 debug.enabletr=false
 com.qc.hardware=true
 
-# Camera
-ro.camera.preview=true
-
 # RIL
 rild.libpath=/system/lib/libhtc_ril.so
 ro.telephony.ril.v3=1

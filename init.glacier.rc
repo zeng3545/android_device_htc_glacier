@@ -112,7 +112,6 @@ service iprenew_eth0 /system/bin/dhcpcd -n
     disabled
     oneshot
 
-
 # compass/accelerometer daemon
 service akmd /system/bin/akmd
     class main

@@ -31,6 +31,7 @@ $(call inherit-product-if-exists, vendor/htc/glacier/device-vendor.mk)
 
 ## (3)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.camera.preview=true \
     ro.com.google.locationfeatures=1 \
     ro.com.google.networklocation=1 \
     ro.com.google.gmsversion=2.3_r3 \
@@ -49,9 +50,9 @@ PRODUCT_COPY_FILES += \
     device/htc/glacier/voicemail-conf.xml:system/etc/voicemail-conf.xml
 
 PRODUCT_PACKAGES += \
-    gps.glacier \
     lights.glacier \
-    sensors.glacier
+    sensors.glacier \
+    gps.glacier
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
