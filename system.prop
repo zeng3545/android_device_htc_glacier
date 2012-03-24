@@ -50,3 +50,6 @@ ro.ril.def.agps.feature=1
 # For HSDPA low throughput
 ro.ril.disable.power.collapse = 1
 
+#For USB mount
+persist.sys.usb.config=mass_storage,adb
+

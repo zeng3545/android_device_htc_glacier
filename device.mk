@@ -54,6 +54,10 @@ PRODUCT_PACKAGES += \
     sensors.glacier \
     gps.glacier
 
+# Torch and other misc apps
+PRODUCT_PACKAGES += \
+    Torch \
+
 # Keylayouts
 PRODUCT_COPY_FILES += \
     device/htc/glacier/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
@@ -77,6 +81,44 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/glacier/firmware/default.acdb:system/etc/firmware/default.acdb \
     device/htc/glacier/firmware/default_org.acdb:system/etc/firmware/default_org.acdb \
+
+# Audio DSP Profiles
+PRODUCT_COPY_FILES += \
+    device/htc/glacier/dsp/A1026_CFG.csv:system/etc/A1026_CFG.csv \
+    device/htc/glacier/dsp/AIC3254_REG.csv:system/etc/AIC3254_REG.csv \
+    device/htc/glacier/dsp/AIC3254_REG_XD.csv:system/etc/AIC3254_REG_XD.csv \
+    device/htc/glacier/dsp/AdieHWCodec.csv:system/etc/AdieHWCodec.csv \
+    device/htc/glacier/dsp/CodecDSPID.txt:system/etc/CodecDSPID.txt \
+    device/htc/glacier/dsp/HP_Audio.csv:system/etc/HP_Audio.csv \
+    device/htc/glacier/dsp/HP_Video.csv:system/etc/HP_Video.csv \
+    device/htc/glacier/dsp/SPK_Combination.csv:system/etc/SPK_Combination.csv \
+    device/htc/glacier/dsp/TPA2051_CFG.csv:system/etc/TPA2051_CFG.csv \
+    device/htc/glacier/dsp/soundimage/Sound_Bass_Booster.txt:system/etc/soundimage/Sound_Bass_Booster.txt \
+    device/htc/glacier/dsp/soundimage/Sound_Blues.txt:system/etc/soundimage/Sound_Blues.txt \
+    device/htc/glacier/dsp/soundimage/Sound_Classical.txt:system/etc/soundimage/Sound_Classical.txt \
+    device/htc/glacier/dsp/soundimage/Sound_Country.txt:system/etc/soundimage/Sound_Country.txt \
+    device/htc/glacier/dsp/soundimage/Sound_Dolby_A_HP.txt:system/etc/soundimage/Sound_Dolby_A_HP.txt \
+    device/htc/glacier/dsp/soundimage/Sound_Dolby_A_SPK.txt:system/etc/soundimage/Sound_Dolby_A_SPK.txt \
+    device/htc/glacier/dsp/soundimage/Sound_Dolby_V_HP.txt:system/etc/soundimage/Sound_Dolby_V_HP.txt \
+    device/htc/glacier/dsp/soundimage/Sound_Dolby_V_SPK.txt:system/etc/soundimage/Sound_Dolby_V_SPK.txt \
+    device/htc/glacier/dsp/soundimage/Sound_Dualmic.txt:system/etc/soundimage/Sound_Dualmic.txt \
+    device/htc/glacier/dsp/soundimage/Sound_Dualmic_EP.txt:system/etc/soundimage/Sound_Dualmic_EP.txt \
+    device/htc/glacier/dsp/soundimage/Sound_Dualmic_SPK.txt:system/etc/soundimage/Sound_Dualmic_SPK.txt \
+    device/htc/glacier/dsp/soundimage/Sound_Jazz.txt:system/etc/soundimage/Sound_Jazz.txt \
+    device/htc/glacier/dsp/soundimage/Sound_Latin.txt:system/etc/soundimage/Sound_Latin.txt \
+    device/htc/glacier/dsp/soundimage/Sound_New_Age.txt:system/etc/soundimage/Sound_New_Age.txt \
+    device/htc/glacier/dsp/soundimage/Sound_Original.txt:system/etc/soundimage/Sound_Original.txt \
+    device/htc/glacier/dsp/soundimage/Sound_Original_SPK.txt:system/etc/soundimage/Sound_Original_SPK.txt \
+    device/htc/glacier/dsp/soundimage/Sound_Piano.txt:system/etc/soundimage/Sound_Piano.txt \
+    device/htc/glacier/dsp/soundimage/Sound_Pop.txt:system/etc/soundimage/Sound_Pop.txt \
+    device/htc/glacier/dsp/soundimage/Sound_R_B.txt:system/etc/soundimage/Sound_R_B.txt \
+    device/htc/glacier/dsp/soundimage/Sound_Rock.txt:system/etc/soundimage/Sound_Rock.txt \
+    device/htc/glacier/dsp/soundimage/Sound_SRS_A_HP.txt:system/etc/soundimage/Sound_SRS_A_HP.txt \
+    device/htc/glacier/dsp/soundimage/Sound_SRS_A_SPK.txt:system/etc/soundimage/Sound_SRS_A_SPK.txt \
+    device/htc/glacier/dsp/soundimage/Sound_SRS_V_HP.txt:system/etc/soundimage/Sound_SRS_V_HP.txt \
+    device/htc/glacier/dsp/soundimage/Sound_SRS_V_SPK.txt:system/etc/soundimage/Sound_SRS_V_SPK.txt \
+    device/htc/glacier/dsp/soundimage/Sound_Treble_Booster.txt:system/etc/soundimage/Sound_Treble_Booster.txt \
+    device/htc/glacier/dsp/soundimage/Sound_Vocal_Booster.txt:system/etc/soundimage/Sound_Vocal_Booster.txt
 
 PRODUCT_COPY_FILES += \
     device/htc/glacier/vold.fstab:system/etc/vold.fstab
@@ -106,6 +148,9 @@ $(call inherit-product, device/htc/common/common.mk)
 
 # common msm7x30 configs
 $(call inherit-product, device/htc/msm7x30-common/msm7x30.mk)
+
+# media profiles and capabilities spec
+$(call inherit-product, device/htc/glacier/media_a1026.mk)
 
 # htc audio settings
 $(call inherit-product, device/htc/glacier/media_htcaudio.mk)

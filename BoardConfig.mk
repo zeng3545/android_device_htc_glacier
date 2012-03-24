@@ -34,13 +34,15 @@ USE_CAMERA_STUB := true
 TARGET_BOOTLOADER_BOARD_NAME := glacier
 
 BOARD_HAVE_HTC_FFC := true
-BOARD_USE_REVERSE_FFC := true
+#BOARD_USE_REVERSE_FFC := true
 
 BOARD_KERNEL_CMDLINE := no_console_suspend=1
 BOARD_KERNEL_BASE := 0x04000000
 BOARD_KERNEL_PAGE_SIZE := 4096
 
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := glacier
+
+BOARD_USE_LEGACY_TOUCHSCREEN := true
 
 # Wifi Specific Defines
 WIFI_DRIVER_MODULE_ARG := "firmware_path=/vendor/firmware/fw_bcm4329.bin nvram_path=/proc/calibration iface_name=eth0"
@@ -60,3 +62,6 @@ BOARD_SDCARD_DEVICE_SECONDARY := /dev/block/mmcblk1
 BOARD_SDEXT_DEVICE := /dev/block/mmcblk1p2
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true
+
+TARGET_SPECIFIC_HEADER_PATH := device/htc/msm7x30-common/include
+BOARD_EGL_GRALLOC_USAGE_FILTER := true
