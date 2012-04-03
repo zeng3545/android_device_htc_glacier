@@ -6,7 +6,7 @@ ro.sf.lcd_density=240
 debug.fb.rgb565=0
 debug.sf.hw=1
 persist.sys.ui.hw=1
-debug.composition.type=mdp
+debug.composition.type=dyn
 
 # Qualcomm display settings
 debug.enabletr=false
@@ -53,6 +53,8 @@ ro.ril.def.agps.feature=1
 # For HSDPA low throughput
 ro.ril.disable.power.collapse = 1
 
-#For USB mount
+#For USB and Full Root Access
 persist.sys.usb.config=mass_storage,adb
+persist.service.adb.enable=1
+persist.sys.root_access=3
 

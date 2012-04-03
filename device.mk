@@ -61,11 +61,10 @@ PRODUCT_PACKAGES += \
 # Keylayouts
 PRODUCT_COPY_FILES += \
     device/htc/glacier/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
-    device/htc/glacier/keylayout/curcial-oj.kl:system/usr/keylayout/curcial-oj.kl \
     device/htc/glacier/keylayout/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl \
     device/htc/glacier/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
     device/htc/glacier/keylayout/glacier-keypad.kl:system/usr/keylayout/glacier-keypad.kl \
-    device/htc/glacier/keylayout/atmel-touchscreen.kl:system/usr/keylayout/atmel-touchscreen.kl \
+    device/htc/glacier/keylayout/curcial-oj.kl:system/usr/keylayout/curcial-oj.kl
 
 # IDC Files
 PRODUCT_COPY_FILES += \
@@ -75,20 +74,25 @@ PRODUCT_COPY_FILES += \
 
 # Keychars
 PRODUCT_COPY_FILES += \
-    device/htc/glacier/keychars/atmel-touchscreen.kcm:system/usr/keychars/atmel-touchscreen.kcm \
+    device/htc/glacier/keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin \
+    device/htc/glacier/keychars/qwerty.kcm.bin:system/usr/keychars/qwerty.kcm.bin \
+    device/htc/glacier/keychars/glacier-keypad.kcm.bin:system/usr/keychars/glacier-keypad.kcm.bin
 
 # Firmware
 PRODUCT_COPY_FILES += \
+    device/htc/glacier/firmware/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd \
+    device/htc/glacier/firmware/audio_cal_BOV1_7.acdb:system/etc/firmware/audio_cal_BOV1_7.acdb \
     device/htc/glacier/firmware/default.acdb:system/etc/firmware/default.acdb \
     device/htc/glacier/firmware/default_org.acdb:system/etc/firmware/default_org.acdb \
+    device/htc/glacier/firmware/default_org_WA.acdb:system/etc/firmware/default_org_WA.acdb
 
 # Audio DSP Profiles
 PRODUCT_COPY_FILES += \
     device/htc/glacier/dsp/A1026_CFG.csv:system/etc/A1026_CFG.csv \
-    device/htc/ace/dsp/AIC3254_REG.csv:system/etc/AIC3254_REG.csv \
-    device/htc/ace/dsp/AIC3254_REG_XD.csv:system/etc/AIC3254_REG_XD.csv \
-    device/htc/ace/dsp/AdieHWCodec.csv:system/etc/AdieHWCodec.csv \
-    device/htc/ace/dsp/CodecDSPID.txt:system/etc/CodecDSPID.txt \
+    device/htc/glacier/dsp/AIC3254_REG.csv:system/etc/AIC3254_REG.csv \
+    device/htc/glacier/dsp/AIC3254_REG_XD.csv:system/etc/AIC3254_REG_XD.csv \
+    device/htc/glacier/dsp/AdieHWCodec.csv:system/etc/AdieHWCodec.csv \
+    device/htc/glacier/dsp/CodecDSPID.txt:system/etc/CodecDSPID.txt \
     device/htc/glacier/dsp/HP_Audio.csv:system/etc/HP_Audio.csv \
     device/htc/glacier/dsp/HP_Video.csv:system/etc/HP_Video.csv \
     device/htc/glacier/dsp/SPK_Combination.csv:system/etc/SPK_Combination.csv \
