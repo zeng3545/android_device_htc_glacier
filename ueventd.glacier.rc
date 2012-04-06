@@ -1,5 +1,6 @@
 /dev/system_bus_freq    0660    system      system
 /dev/cpu_dma_latency    0660    system      system
+/dev/gemini0            0660    system      system
 
 #radio
 /dev/radio_feedback     0660    radio       radio
@@ -42,5 +43,4 @@
 /dev/uinput             0660    system      bluetooth
 
 #camera
-/dev/gemini0            0660    system      camera
 /dev/msm_camera/*       0660    system      camera
