@@ -30,14 +30,6 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product-if-exists, vendor/htc/glacier/device-vendor.mk)
 
 ## (3)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.com.google.locationfeatures=1 \
-    ro.com.google.networklocation=1 \
-    ro.com.google.gmsversion=2.3_r3 \
-    ro.setupwizard.enable_bypass=1 \
-    dalvik.vm.lockprof.threshold=500 \
-    dalvik.vm.dexopt-flags=m=y
-
 DEVICE_PACKAGE_OVERLAYS += device/htc/glacier/overlay
 
 PRODUCT_COPY_FILES += \
@@ -53,29 +45,20 @@ PRODUCT_PACKAGES += \
     sensors.glacier \
     gps.glacier
 
-# Torch and other misc apps
-PRODUCT_PACKAGES += \
-    Torch \
-    FFCFix 
-
 # Keylayouts
 PRODUCT_COPY_FILES += \
-    device/htc/glacier/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
     device/htc/glacier/keylayout/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl \
-    device/htc/glacier/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
     device/htc/glacier/keylayout/glacier-keypad.kl:system/usr/keylayout/glacier-keypad.kl \
-    device/htc/glacier/keylayout/curcial-oj.kl:system/usr/keylayout/curcial-oj.kl
+#   device/htc/glacier/keylayout/curcial-oj.kl:system/usr/keylayout/curcial-oj.kl
 
 # IDC Files
 PRODUCT_COPY_FILES += \
     device/htc/glacier/idc/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc \
+    device/htc/glacier/idc/glacier-keypad.idc:system/usr/idc/glacier-keypad.idc \
     device/htc/glacier/idc/curcial-oj.idc:system/usr/idc/curcial-oj.idc \
-    device/htc/glacier/idc/glacier-keypad.idc:system/usr/idc/glacier-keypad.idc
 
 # Keychars
 PRODUCT_COPY_FILES += \
-    device/htc/glacier/keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin \
-    device/htc/glacier/keychars/qwerty.kcm.bin:system/usr/keychars/qwerty.kcm.bin \
     device/htc/glacier/keychars/glacier-keypad.kcm.bin:system/usr/keychars/glacier-keypad.kcm.bin
 
 # Firmware

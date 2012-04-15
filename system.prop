@@ -38,8 +38,9 @@ ro.gsm.2nd_data_retry_config = max_retries=3, 2000, 2000, 2000
 ro.telephony.default_network=0
 ro.telephony.ril.v3=1
 
-wifi.interface=eth0
-wifi.supplicant_scan_interval=15
+# WiFi interface & scan interval
+wifi.interface=wlan0
+wifi.supplicant_scan_interval=30
 
 mobiledata.interfaces=gannet0,rmnet0,rmnet1,rmnet2
 
