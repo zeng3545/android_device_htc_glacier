@@ -66,32 +66,14 @@ PRODUCT_COPY_FILES += \
     device/htc/glacier/firmware/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd \
     device/htc/glacier/firmware/default.acdb:system/etc/firmware/default.acdb \
     device/htc/glacier/firmware/default_org.acdb:system/etc/firmware/default_org.acdb \
-    device/htc/glacier/firmware/default_org_WA.acdb:system/etc/firmware/default_org_WA.acdb
-
-# Audio DSP Profiles
-PRODUCT_COPY_FILES += \
+    device/htc/glacier/firmware/default_org_WA.acdb:system/etc/firmware/default_org_WA.acdb \
     device/htc/glacier/firmware/A1026_CFG.csv:system/etc/A1026_CFG.csv \
     device/htc/glacier/firmware/AdieHWCodec.csv:system/etc/AdieHWCodec.csv \
     device/htc/glacier/firmware/AdieHWCodec_WA.csv:system/etc/AdieHWCodec_WA.csv \
-    device/htc/glacier/firmware/AudioBTID.csv:system/etc/AudioBTID.csv \
+    device/htc/glacier/firmware/AudioBTID.csv:system/etc/AudioBTID.csv
 
 PRODUCT_COPY_FILES += \
     device/htc/glacier/vold.fstab:system/etc/vold.fstab
-
-# Kernel modules
-#PRODUCT_COPY_FILES += \
-
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/htc/msm7x30-common/msm7230/kernel
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
-
-PRODUCT_COPY_FILES += \
-    device/htc/msm7x30-common/msm7230/bcm4329.ko:system/lib/modules/bcm4329.ko
 
 # High-density art, but English locale
 PRODUCT_LOCALES += en
