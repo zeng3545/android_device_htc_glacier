@@ -69,11 +69,15 @@ PRODUCT_COPY_FILES += \
     device/htc/glacier/firmware/default_org_WA.acdb:system/etc/firmware/default_org_WA.acdb \
     device/htc/glacier/firmware/A1026_CFG.csv:system/etc/A1026_CFG.csv \
     device/htc/glacier/firmware/AdieHWCodec.csv:system/etc/AdieHWCodec.csv \
-    device/htc/glacier/firmware/AdieHWCodec_WA.csv:system/etc/AdieHWCodec_WA.csv \
-    device/htc/glacier/firmware/AudioBTID.csv:system/etc/AudioBTID.csv
+    device/htc/glacier/firmware/AdieHWCodec_WA.csv:system/etc/AdieHWCodec_WA.csv
 
+# Vold
 PRODUCT_COPY_FILES += \
     device/htc/glacier/vold.fstab:system/etc/vold.fstab
+
+# media config xml file
+PRODUCT_COPY_FILES += \
+    device/htc/glacier/media_profiles.xml:system/etc/media_profiles.xml
 
 # High-density art, but English locale
 PRODUCT_LOCALES += en
@@ -93,5 +97,3 @@ $(call inherit-product, device/htc/glacier/media_a1026.mk)
 $(call inherit-product, device/htc/glacier/media_htcaudio.mk)
 
 $(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
-
-$(call inherit-product-if-exists, vendor/htc/glacier/device-vendor.mk)

@@ -13,4 +13,3 @@
 
 # Mounts the first usable partition of the specified device
 dev_mount sdcard /mnt/sdcard auto /devices/platform/msm_sdcc.4/mmc_host
-dev_mount ins /mnt/emmc emmc /devices/platform/msm_sdcc.2/mmc_host
