@@ -46,8 +46,8 @@ BOARD_KERNEL_PAGE_SIZE := 4096
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := glacier
 
 # Inline kernel building
-TARGET_KERNEL_SOURCE := kernel/htc-kernel-msm7x30
-TARGET_KERNEL_CONFIG := cyanogen_msm7230_defconfig
+TARGET_KERNEL_SOURCE := kernel/htc/msm7x30
+TARGET_KERNEL_CONFIG := cyanogen_glacier_defconfig
 
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 4194304
@@ -66,5 +66,3 @@ BOARD_HAS_NO_MISC_PARTITION := true
 
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
-
-COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT
