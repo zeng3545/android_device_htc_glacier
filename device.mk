@@ -76,18 +76,11 @@ PRODUCT_COPY_FILES += \
     device/htc/glacier/firmware/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd \
     device/htc/glacier/firmware/default.acdb:system/etc/firmware/default.acdb \
     device/htc/glacier/firmware/default_org.acdb:system/etc/firmware/default_org.acdb \
-    device/htc/glacier/firmware/default_org_WA.acdb:system/etc/firmware/default_org_WA.acdb \
-    device/htc/glacier/firmware/A1026_CFG.csv:system/etc/A1026_CFG.csv \
-    device/htc/glacier/firmware/AdieHWCodec.csv:system/etc/AdieHWCodec.csv \
-    device/htc/glacier/firmware/AdieHWCodec_WA.csv:system/etc/AdieHWCodec_WA.csv
+    device/htc/glacier/firmware/default_org_WA.acdb:system/etc/firmware/default_org_WA.acdb
 
 # Vold
 PRODUCT_COPY_FILES += \
     device/htc/glacier/vold.fstab:system/etc/vold.fstab
-
-# media config xml file
-PRODUCT_COPY_FILES += \
-    device/htc/glacier/media_profiles.xml:system/etc/media_profiles.xml
 
 # High-density art, but English locale
 PRODUCT_LOCALES += en

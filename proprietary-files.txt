@@ -1,0 +1,47 @@
+# Configuration files
+etc/A1026_CFG.csv
+etc/AdieHWCodec.csv
+etc/AdieHWCodec_WA.csv
+etc/agps_rm
+etc/AudioBTID.csv
+etc/media_profiles.xml
+etc/vpimg
+
+# Executable files
+bin/akmd
+bin/awb_camera
+bin/bma150_usr
+bin/charging
+bin/htcbatt
+bin/lsc_camera
+bin/rmt_storage
+
+# Audio
+lib/libaudioalsa.so
+lib/libhtc_acoustic.so
+
+# Radio
+lib/libhtc_ril.so
+
+# Wifi Calling (Disabled for now)
+# lib/librilswitch.so
+# lib/libganril.so
+# lib/libkineto.so
+
+# Camera
+lib/hw/camera.default.so
+lib/libchromatix_s5k4e1gx_default_video.so
+lib/libchromatix_s5k4e1gx_preview.so
+lib/libcameraface.so
+lib/libcamerapp.so
+lib/libgemini.so
+lib/libidl.so
+lib/libmmipl.so
+lib/libmmjpeg.so
+lib/liboemcamera.so
+lib/libOlaEngine.so
+lib/libposteffect.so
+
+# Media libraries
+lib/libwvm.so
+lib/libWVStreamControlAPI_L3.so
