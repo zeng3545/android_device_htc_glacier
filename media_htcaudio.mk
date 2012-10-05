@@ -17,3 +17,8 @@
 PRODUCT_PROPERTY_OVERRIDES += \
       htc.audio.alt.enable=0 \
       htc.audio.hac.enable=0
+
+# Config
+PRODUCT_COPY_FILES += \
+    device/htc/glacier/prebuilt/AdieHWCodec.csv:system/etc/AdieHWCodec.csv \
+    device/htc/glacier/prebuilt/AdieHWCodec_WA.csv:system/etc/AdieHWCodec_WA.csv

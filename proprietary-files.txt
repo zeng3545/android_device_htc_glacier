@@ -1,10 +1,5 @@
 # Configuration files
-etc/A1026_CFG.csv
-etc/AdieHWCodec.csv
-etc/AdieHWCodec_WA.csv
 etc/agps_rm
-etc/AudioBTID.csv
-etc/media_profiles.xml
 etc/vpimg
 
 # Executable files
@@ -12,26 +7,17 @@ bin/akmd
 bin/awb_camera
 bin/bma150_usr
 bin/charging
-bin/htcbatt
 bin/lsc_camera
+bin/netmgrd
+bin/netsharing
 bin/rmt_storage
 
 # Audio
 lib/libaudioalsa.so
 lib/libhtc_acoustic.so
 
-# Radio
-lib/libhtc_ril.so
-
-# Wifi Calling (Disabled for now)
-# lib/librilswitch.so
-# lib/libganril.so
-# lib/libkineto.so
-
 # Camera
 lib/hw/camera.default.so
-lib/libchromatix_s5k4e1gx_default_video.so
-lib/libchromatix_s5k4e1gx_preview.so
 lib/libcameraface.so
 lib/libcamerapp.so
 lib/libgemini.so
@@ -42,6 +28,29 @@ lib/liboemcamera.so
 lib/libOlaEngine.so
 lib/libposteffect.so
 
-# Media libraries
-lib/libwvm.so
-lib/libWVStreamControlAPI_L3.so
+# Chromatix
+lib/libchromatix_s5k4e1gx_default_video.so
+lib/libchromatix_s5k4e1gx_preview.so
+
+# Graphics
+lib/egl/eglsubAndroid.so
+lib/egl/libEGL_adreno200.so
+lib/egl/libGLESv1_CM_adreno200.so
+lib/egl/libGLESv2_adreno200.so
+lib/egl/libq3dtools_adreno200.so
+lib/libC2D2.so
+lib/libc2d2_z180.so
+lib/libgsl.so
+lib/libOpenVG.so
+lib/libsc-a2xx.so
+
+# Radio
+lib/libdiag.so
+lib/libdll.so
+lib/libdsi_netctrl.so
+lib/libdsutils.so
+lib/libhtc_ril.so
+lib/libnetmgr.so
+lib/libqdp.so
+lib/libqmiservices.so
+lib/libqmi.so

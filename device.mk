@@ -19,7 +19,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # The gps config appropriate for this device
 PRODUCT_COPY_FILES += \
-    device/htc/glacier/gps.conf:system/etc/gps.conf
+    device/htc/glacier/prebuilt/gps.conf:system/etc/gps.conf
 
 ## (1) First, the most specific values, i.e. the aspects that are specific to GSM
 
@@ -48,7 +48,7 @@ PRODUCT_COPY_FILES += \
 
 # gsm config xml file
 PRODUCT_COPY_FILES += \
-    device/htc/glacier/voicemail-conf.xml:system/etc/voicemail-conf.xml
+    device/htc/glacier/prebuilt/voicemail-conf.xml:system/etc/voicemail-conf.xml
 
 PRODUCT_PACKAGES += \
     lights.glacier \
@@ -57,30 +57,29 @@ PRODUCT_PACKAGES += \
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
-    device/htc/glacier/keylayout/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl \
-    device/htc/glacier/keylayout/glacier-keypad.kl:system/usr/keylayout/glacier-keypad.kl \
-#   device/htc/glacier/keylayout/curcial-oj.kl:system/usr/keylayout/curcial-oj.kl
+    device/htc/glacier/prebuilt/keylayout/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl \
+    device/htc/glacier/prebuilt/keylayout/glacier-keypad.kl:system/usr/keylayout/glacier-keypad.kl
 
 # IDC Files
 PRODUCT_COPY_FILES += \
-    device/htc/glacier/idc/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc \
-    device/htc/glacier/idc/glacier-keypad.idc:system/usr/idc/glacier-keypad.idc \
-    device/htc/glacier/idc/curcial-oj.idc:system/usr/idc/curcial-oj.idc \
+    device/htc/glacier/prebuilt/idc/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc \
+    device/htc/glacier/prebuilt/idc/glacier-keypad.idc:system/usr/idc/glacier-keypad.idc \
+    device/htc/glacier/prebuilt/idc/curcial-oj.idc:system/usr/idc/curcial-oj.idc \
 
 # Keychars
 PRODUCT_COPY_FILES += \
-    device/htc/glacier/keychars/glacier-keypad.kcm.bin:system/usr/keychars/glacier-keypad.kcm.bin
+    device/htc/glacier/prebuilt/keychars/glacier-keypad.kcm.bin:system/usr/keychars/glacier-keypad.kcm.bin
 
 # Firmware
 PRODUCT_COPY_FILES += \
-    device/htc/glacier/firmware/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd \
-    device/htc/glacier/firmware/default.acdb:system/etc/firmware/default.acdb \
-    device/htc/glacier/firmware/default_org.acdb:system/etc/firmware/default_org.acdb \
-    device/htc/glacier/firmware/default_org_WA.acdb:system/etc/firmware/default_org_WA.acdb
+    device/htc/glacier/prebuilt/firmware/bcm4329.hcd:system/etc/firmware/bcm4329.hcd \
+    device/htc/glacier/prebuilt/firmware/default.acdb:system/etc/firmware/default.acdb \
+    device/htc/glacier/prebuilt/firmware/default_org.acdb:system/etc/firmware/default_org.acdb \
+    device/htc/glacier/prebuilt/firmware/default_org_WA.acdb:system/etc/firmware/default_org_WA.acdb
 
 # Vold
 PRODUCT_COPY_FILES += \
-    device/htc/glacier/vold.fstab:system/etc/vold.fstab
+    device/htc/glacier/prebuilt/vold.fstab:system/etc/vold.fstab
 
 # High-density art, but English locale
 PRODUCT_LOCALES += en

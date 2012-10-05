@@ -3,56 +3,26 @@
 #
 ro.sf.lcd_density=240
 
-# cm qcom build lub
-com.qc.hardware=true
-com.qc.hdmi_out=false
-
-# RIL
-rild.libpath=/system/lib/libhtc_ril.so
-# RilLibPath for Ganlite by Godel_Chen
-# rild.libpath.ganlite=/system/lib/librilswitch.so
-# rilswitch.vendorlibpath=/system/lib/libhtc_ril.so
-# rilswitch.ganlibpath=/system/lib/libganril.so
-
-ro.ril.enable.a53=1
-ro.ril.disable.fd.plmn.prefix=23402,23410,23411,23420
-ro.ril.enable.dtm=1
-ro.ril.gprsclass=12
-ro.ril.hsdpa.category=10
-ro.ril.hsupa.category=6
-ro.ril.hsxpa=2
-ro.ril.enable.sdr=0
-ro.ril.enable.gea3=0
-
-net.tcp.buffersize.hsdpa = 4094,87380,393216,4096,16384,110208
-
-# Modify MMS APN retry timer from 5s to 2s.
-ro.gsm.2nd_data_retry_config = max_retries=3, 2000, 2000, 2000
-
-# Default network type.
-# 0 => WCDMA preferred.
-ro.telephony.default_network=0
-ro.telephony.ril.v3=signalstrength
-
-# WiFi interface & scan interval
-wifi.interface=wlan0
-wifi.supplicant_scan_interval=30
-
+# radio
 mobiledata.interfaces=gannet0,rmnet0,rmnet1,rmnet2
+rild.libpath=/system/lib/libhtc_ril.so
+ro.telephony.ril.v3=datacallapn,signalstrength
 
-# The OpenGL ES API level that is natively supported by this device.
-# This is a 16.16 fixed point number
-ro.opengles.version = 131072
+# graphics
+com.qc.hardware=true
+debug.composition.type=dyn
+#debug.mdpcomp.maxlayer=2
+#debug.mdpcomp.logs=0
+debug.enabletr=true
+debug.sf.hw=1
+ro.opengles.version=131072
 
-# For the default value of agps
-ro.ril.def.agps.mode = 2
-ro.ril.def.agps.feature=1
+# qcom cpugovernor service
+dev.pm.dyn_samplingrate=1
 
-# For HSDPA low throughput
-ro.ril.disable.power.collapse = 1
+# wifi
+wifi.interface=wlan0
 
-#For USB and Full Root Access
+# UMS
 persist.sys.usb.config=mass_storage,adb
-persist.service.adb.enable=1
-persist.sys.root_access=3
 
