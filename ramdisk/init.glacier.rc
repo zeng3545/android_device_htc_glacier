@@ -2,26 +2,33 @@ import init.htc7x30.usb.rc
 
 on early-init
 
+    mount debugfs /sys/kernel/debug /sys/kernel/debug
+
     export EXTERNAL_STORAGE /storage/sdcard0
     mkdir /storage 0050 system sdcard_r
     mkdir /storage/sdcard0 0000 system system
+    # for backwards compatibility
     symlink /storage/sdcard0 /sdcard
     symlink /storage/sdcard0 /mnt/sdcard
 
-on early-fs
-
-    mkdir /system
-    mkdir /data 0771 system system
-    mkdir /cache 0770 system cache
-    mkdir /devlog 0700 root root
-    mount ext4 /dev/block/mmcblk0p25 /system wait ro barrier=1
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
-    mount ext4 /dev/block/mmcblk0p26 /data wait noatime nosuid nodev barrier=1 noauto_da_alloc
-    mount ext4 /dev/block/mmcblk0p27 /cache wait noatime nosuid nodev barrier=1
-    mount ext4 /dev/block/mmcblk0p28 /devlog wait noatime nosuid nodev barrier=1
+
+on emmc-fs
+   mkdir /devlog 0700 root root
+
+   #mount all the things
+   mount_all fstab.glacier
+
+on post-fs
+    chmod 0771 /cache
+    chown system cache /cache
+    chmod 0700 /devlog
+    chown root root /devlog
 
 on post-fs-data
-
+    # Prep for services
+    chmod 0771/data
+    chown system system /data
     mkdir /data/radio 0770 radio radio
     mkdir /data/misc 1771 system misc
     mkdir /data/misc/bluetoothd 0770 bluetooth bluetooth
@@ -37,58 +44,63 @@ on post-fs-data
     setprop vold.post_fs_data_done 1
 
 on boot
-
-    chmod 0664 /sys/module/gpio_event/parameters/phone_call_status
+    # CyanogenMod SysFS entries
     chown radio system /sys/module/gpio_event/parameters/phone_call_status
-    chmod 0644 /sys/camera_led_status/led_ril_status
+    chmod 0664         /sys/module/gpio_event/parameters/phone_call_status
     chown radio system /sys/camera_led_status/led_ril_status
+    chmod 0644         /sys/camera_led_status/led_ril_status
 
+    # Power Management
     chmod 0664 /sys/module/pm/parameters/idle_sleep_mode
 
-    # for Flip to speaker
+    # Disable IPv6 over mobile radio
+#    write /proc/sys/net/ipv6/conf/rmnet0/disable_ipv6 1
+#    write /proc/sys/net/ipv6/conf/rmnet1/disable_ipv6 1
+#    write /proc/sys/net/ipv6/conf/rmnet2/disable_ipv6 1
+
+    # HTC SysFS for "Flip to Speaker"
     chown radio radio /sys/class/htc_accelerometer/accelerometer/PhoneOnOffFlag
     chown radio radio /sys/class/htc_ecompass/ecompass/PhoneOnOffFlag
 
-    # for Optical sensors
+    # Optical sensors
     chown system system /sys/class/optical_sensors/lightsensor/ls_adc
     chown system system /sys/class/optical_sensors/lightsensor/ls_auto
     chown system system /sys/class/optical_sensors/lightsensor/ls_kadc
     chown system radio  /sys/class/optical_sensors/proximity/ps_adc
     chown system system /sys/class/optical_sensors/proximity/ps_kadc
-    chmod 0666 /sys/class/optical_sensors/proximity/ps_kadc
+    chmod 0666          /sys/class/optical_sensors/proximity/ps_kadc
     chown system system /sys/class/optical_sensors/proximity/ps_led
     chown system system /sys/class/optical_sensors/proximity/ps_test_mode
 
-    # bluetooth power up/down interface
+    # SysFS charging functions
+    chown radio radio /sys/class/power_supply/battery/charger_control
+    chmod 0660        /sys/class/power_supply/battery/charger_control
+
+    # SysFS bluetooth interface
+    chown bluetooth bluetooth /dev/ttyHS0
+    chmod 0600 /dev/ttyHS0
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
     chmod 0660                /sys/class/rfkill/rfkill0/state
 
-    # bluetooth MAC address programming
+    # Bluetooth MAC address path
     chown bluetooth bluetooth /sys/module/htc_bdaddress/parameters/bdaddress
     setprop ro.bt.bdaddr_path /sys/module/htc_bdaddress/parameters/bdaddress
 
-    # bluetooth car dock pin
+    # Bluetooth car dock pin
     chown system system /sys/class/switch/dock/bt_pin
 
-    # Permissions for Liblights.
-    chown system system /sys/class/leds/green/brightness
-    chown system system /sys/class/leds/green/blink
+    # liblights permissions
     chown system system /sys/class/leds/amber/brightness
     chown system system /sys/class/leds/amber/blink
-    chown system system /sys/class/leds/red/brightness
-    chown system system /sys/class/leds/red/blink
+    chown system system /sys/class/leds/green/brightness
+    chown system system /sys/class/leds/green/blink
     chown system system /sys/class/leds/button-backlight/brightness
-    chown system system /sys/class/leds/lcd-backlight/brightness
-
-    # flashlight
     chown system camera /sys/class/leds/flashlight/brightness
     chmod 0660          /sys/class/leds/flashlight/brightness
+    chown system system /sys/class/leds/lcd-backlight/brightness
 
-    # enable the GPS
-    setprop ro.ril.def.agps.mode 2
-
-    # Increase readahead buffers on MMC devices
+    # MMC devices readahead performance tweak
     write /sys/block/mmcblk0/bdi/read_ahead_kb 1024
     write /sys/block/mmcblk1/bdi/read_ahead_kb 1024
 
@@ -96,68 +108,78 @@ on boot
     write /sys/module/lowmemorykiller/parameters/minfile 0,0,0,5120,5632,6144
     write /sys/module/lowmemorykiller/parameters/check_filepages 1
 
-    write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold 90
-    write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 50000
+service wpa_supplicant /system/bin/wpa_supplicant -Dnl80211 -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf -e/data/misc/wifi/entropy.bin
+    class late_start
+    socket wpa_wlan0 dgram 660 wifi wifi
+    disabled
+    oneshot
 
-    mount debugfs /sys/kernel/debug /sys/kernel/debug
-
-service wpa_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf
-    class main
+service p2p_supplicant /system/bin/wpa_supplicant -Dnl80211 -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf
+    class late_start
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
 
 service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL
-    class main
-    disabled
-    oneshot
- 
-service iprenew_wlan0 /system/bin/dhcpcd -n
-    class main
+    class late_start
     disabled
     oneshot
 
-# compass/accelerometer daemon
+service dhcpcd_p2p /system/bin/dhcpcd -aABKL
+    class late_start
+    disabled
+    oneshot
+
+service dhcpcd_bnep0 /system/bin/dhcpcd -ABKL
+    class late_start
+    disabled
+    oneshot
+
+service iprenew_wlan0 /system/bin/dhcpcd -n
+    class late_start
+    disabled
+    oneshot
+
+service iprenew_p2p /system/bin/dhcpcd -n
+    class late_start
+    disabled
+    oneshot
+
+service iprenew_bnep0 /system/bin/dhcpcd -n
+    class late_start
+    disabled
+    oneshot
+
+# Compass and accelerometer daemon
 service akmd /system/bin/akmd
-    class main
+    class late_start
     user compass
     group compass misc input
 
-# bugreport is triggered by holding down volume down, volume up and power
+# Bugreport is triggered by the KEY_VOLUMEUP and BTN_MOUSE keycodes
 service bugreport /system/bin/bugmailer.sh -v
-    class main    
+    class late_start
     disabled
     oneshot
     keycodes 158 139
 
 service hciattach /system/bin/brcm_patchram_plus --enable_hci --enable_lpm \
-    --baudrate 3000000 --patchram /vendor/firmware/bcm4329.hcd /dev/ttyHS0
+    --baudrate 3000000 --patchram /etc/firmware/bcm4329.hcd /dev/ttyHS0
     class main
     user bluetooth
     group bluetooth net_bt_admin
     disabled
 
 service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p13 /dev/block/mmcblk0p14
-    class main
+    class core
     user root
 
-service htc_ebdlogd /system/bin/htc_ebdlogd -s -k -P 7
-    class main
-    user root
-    disabled
-    oneshot
+on property:ro.use_data_netmgrd=false
+    # netmgr not supported on specific target
+    stop netmgrd
 
-service htc_ebdlogd_rel /system/bin/htc_ebdlogd -s -k
-    class main
-    user root
-    disabled
-    oneshot
+on property:service.adb.root=1
+    write /sys/class/android_usb/android0/enable 0
+    restart adbd
+    write /sys/class/android_usb/android0/enable 1
 
-on property:ro.build.tags=test-keys
-    start htc_ebdlogd
-
-on property:ro.build.tags=release-keys
-    start htc_ebdlogd_rel
-
-on property:ro.emmc=1
-    start rmt_storage
