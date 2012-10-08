@@ -27,6 +27,8 @@ lib/libmmjpeg.so
 lib/liboemcamera.so
 lib/libOlaEngine.so
 lib/libposteffect.so
+lib/libwvm.so
+lib/libWVStreamControlAPI_L3.so
 
 # Chromatix
 lib/libchromatix_s5k4e1gx_default_video.so
