@@ -24,7 +24,7 @@
     <bool name="useCameraInterface">true</bool>
 
     <!-- Full path to the sysfs toggle -->
-    <string name="flashDevice">/sys/devices/platform/flashlight.0/leds/flashlight/brightness</string>
+    <string name="flashDevice">/sys/class/leds/flashlight/brightness</string>
 
     <!-- Lowest setting -->
     <integer name="valueOn">1</integer>
